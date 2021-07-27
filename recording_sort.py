@@ -1,6 +1,6 @@
 '''
 recording_sort accomplishes the following:
-- reads in a csv file
+- reads in a csv file via pandas
 - creates directory based on a certain column
 - creates range of abf file numbers to move
 - moves those files to their respective directories
