@@ -22,7 +22,7 @@ for index, row in df.iterrows():
     files = range(row[first_file], row[last_file])
 
     for file in files:
-        shutil.copy(f'{row['location']}/{file}.abf', f'{csv_path}/{row['destination']}')
+        shutil.copy(f'{row['location']}/{file}.abf', f'{csv_path}/{row['destination']}/')
         create_image(file, row['location'], f'{csv_path}/{row['destination']}')
     
     load_count += 1
