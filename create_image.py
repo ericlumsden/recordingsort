@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def create_image(abf_file_name, abf_file_location, destination):
     plt.figure(0)
-    abf = pyabf.ABF(f"{abf_file_location}/{abf_file_name}.abf")
+    abf = pyabf.ABF(f"{abf_file_location}{abf_file_name}.abf")
     for sweep in abf.sweepList:
         abf.setSweep(sweep=sweep, channel=0)
         plt.plot(abf.sweepX, abf.sweepY, label=f'sweep#_{sweep}')

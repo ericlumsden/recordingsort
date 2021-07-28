@@ -13,17 +13,20 @@ import shutil, os
 
 csv_path = input("Enter csv file location: ")
 csv_file = input("Enter csv file name: ")
-df = pandas.read_csv(f'{csv_path}/{csv_file}.csv')
+df = pd.read_csv(f'{csv_path}/{csv_file}.csv')
+print(df.columns)
 
 load_count = 0
 for index, row in df.iterrows():
     print("\r" + f'{load_count}/{len(df)}', end="")
-    os.mkdir(f'{csv_path}/{row['destination']}')
-    files = range(row[first_file], row[last_file])
+    try:
+        os.mkdir(f'{csv_path}/{row.destination}/')
+    except OSError as error:
+        print(error)
+    files = range(row['first_file'], row['last_file']+1)
 
     for file in files:
-        shutil.copy(f'{row['location']}/{file}.abf', f'{csv_path}/{row['destination']}/')
-        create_image(file, row['location'], f'{csv_path}/{row['destination']}')
+        shutil.copy(f'{row.location}{file}.abf', f'{csv_path}/{row.destination}/')
+        create_image(file, row.location, f'{csv_path}/{row.destination}')
     
     load_count += 1
-    

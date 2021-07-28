@@ -2,7 +2,7 @@
 automatic abf sorter and trace image creator
 
 requirements:
-- csv of files to be moved laid out with the following headers:
+- csv of files to be moved laid out with the following headers (in any order):
 
 || location || first_file || last_file || destination ||
 
