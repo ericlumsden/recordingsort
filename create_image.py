@@ -4,10 +4,9 @@ import pyabf
 import matplotlib.pyplot as plt
 
 def create_image(abf_file_name, abf_file_location, destination):
-    plt.figure(0)
     abf = pyabf.ABF(f"{abf_file_location}{abf_file_name}.abf")
     for sweep in abf.sweepList:
-        abf.setSweep(sweep=sweep, channel=0)
+        abf.setSweep(sweep, channel=0)
         plt.plot(abf.sweepX, abf.sweepY, label=f'sweep#_{sweep}')
     
     plt.xlabel('time (s)')
@@ -15,5 +14,6 @@ def create_image(abf_file_name, abf_file_location, destination):
     plt.title(f'{abf_file_name}')
 
     plt.savefig(f'{destination}/{abf_file_name}.png')
+    plt.clf()
 
     return None
